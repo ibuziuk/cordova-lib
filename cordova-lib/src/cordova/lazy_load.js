@@ -100,7 +100,7 @@ function cordova_git(platform) {
         return Q.reject(new Error('Cordova library "' + platform.name + '" not recognized.'));
     }
     plat = mixed_platforms[platform.name];
-    if (/^...*:/.test(plat.url)) {
+    if (/^...*:/.test(plat.url) && (plat.url.indexOf('github.com') == -1)) {
         plat.url = plat.url + ';a=snapshot;h=' + platform.version + ';sf=tgz';
     }
     plat.id = 'cordova';
