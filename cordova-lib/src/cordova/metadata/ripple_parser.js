@@ -95,8 +95,9 @@ module.exports.prototype = {
 
     // Returns a promise.
     update_project:function(cfg) {
-        var platformWww = path.join(this.path, 'www');
         try {
+            // ripple requires config.xml to be in www
+            shell.cp('-f', path.join(this.path, 'config.xml'), path.join(this.path, 'www'));
             this.update_from_config(cfg);
         } catch(e) {
             return Q.reject(e);
